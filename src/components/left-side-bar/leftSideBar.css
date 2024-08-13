@@ -1,0 +1,69 @@
+.sidebar {
+  width: 16.666667%; 
+  background-color: white;
+  height: 100vh; 
+}
+
+.logo-container {
+  padding-top: 1rem;
+  text-align: center;
+  gap: 0.25rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo {
+  margin-bottom: 0.25rem; 
+}
+
+.company-name {
+  font-family: 'Khand', sans-serif; 
+  font-weight: bold;
+  font-size: 2.25rem;
+}
+
+.solutions-text {
+  margin-top: 1rem; 
+  text-align: center;
+}
+
+.faq-div{
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.faq-question{
+  font-size: large;
+  font-weight: 600;
+  text-align: left;
+  margin-left: .5rem;
+  margin-right: .250rem;
+}
+
+.faq-answer{
+  font-size: medium;
+  font-weight: 400;
+  margin-top: .8rem;
+  margin-left: 1.5rem;
+  list-style-type: disc;
+}
+
+.collaborator-div{
+  margin-top: 5rem;
+  text-align: center;
+}
+
+.collaborator-name{
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-family: 'Khand', sans-serif;
+}
+
+.collaborator-title{
+  margin-top: 0.5rem;
+}

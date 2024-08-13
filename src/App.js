@@ -1,12 +1,12 @@
-import Content from "./components/Content";
-import LeftSideBar from "./components/LeftSideBar";
-
+import Content from "./components/content/Content";
+import LeftSideBar from "./components/left-side-bar/LeftSideBar";
+import './app.css'
 
 function App() {
   return (
-    <section className="bg-[#D9D9D9] w-screen h-screen flex overflow-hidden">
-      <LeftSideBar/>
-      <Content/>
+    <section class="main-section">
+      <LeftSideBar />
+      <Content />
     </section>
   );
 }

@@ -1,0 +1,7 @@
+.main-section {
+  background-color: #D9D9D9;
+  width: 100vw; 
+  height: 100vh; 
+  display: flex;
+  overflow: hidden;
+}
