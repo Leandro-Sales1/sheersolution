@@ -43,8 +43,8 @@
   font-size: large;
   font-weight: 600;
   text-align: left;
-  margin-left: .5rem;
-  margin-right: .250rem;
+  margin: 0 1rem;
+  
 }
 
 .faq-answer{
@@ -58,6 +58,11 @@
 .collaborator-div{
   margin-top: 5rem;
   text-align: center;
+}
+
+.collaborator-img{
+  width: 30%;
+  height: auto;
 }
 
 .collaborator-name{

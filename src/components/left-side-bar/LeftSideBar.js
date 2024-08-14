@@ -23,7 +23,7 @@ export default function LeftSideBar() {
           })}
         </div>
         <div className='collaborator-div'>
-          <img src='./assets/joaoGomes.png' alt='Imagem do colaborador'></img>
+          <img className='collaborator-img' src='./assets/joaoGomes.png' alt='Imagem do colaborador'></img>
           <h2 className='collaborator-name'>João Gomes</h2>
           <p className='collaborator-title'>Service Desk</p>
         </div>

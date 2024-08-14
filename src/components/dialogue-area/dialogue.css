@@ -1,32 +1,58 @@
 .dialogue-section{
   display: flex;
-  flex-direction: column-reverse;
+  justify-content: end;
+  flex-direction: column;
   position: relative;
   height: 90vh;
+}
+.response-div{
+  text-wrap: wrap;
+  display: inline-flex;
+  justify-content: flex-start;
+  width: 100%;
 }
 
 .message-div{
   text-wrap: wrap;
-
+  display: inline-flex;
+  justify-content: flex-end;
+  width: 100%;
 }
 
 .label-message{
   position: relative;
-  left: 0;
-  margin: 10px 0;
-  max-width: 20rem;
-  padding: 4px;
-  background-color: gray;
+  right: 3rem;
+  margin: .5rem 0;
+  width: 15rem;
+  height: auto;
+  max-height: fit-content;
+  max-width: 40rem;
+  padding: 0.5rem 1rem;
+  background-color: #88deff;
+  text-align: left;
+  text-overflow: clip;
   text-wrap: wrap;
   overflow: hidden;
-  
+  border-radius: 6px;
+  white-space: normal;
+  word-wrap: break-word;
 }
 
-.label-icon{
-  position: absolute;
-  top: 0;
-  z-index: var(--layer-1);
-  display: block;
-  width: 8px;
-  height: 13px;
+.label-response{
+  position: relative;
+  left: 3rem;
+  margin: .5rem 0;
+  width: 15rem;
+  height: auto;
+  max-height: fit-content;
+  max-width: 40rem;
+  padding: 0.5rem 1rem;
+  background-color: #88deff;
+  text-align: left;
+  text-overflow: clip;
+  text-wrap: wrap;
+  overflow: hidden;
+  border-radius: 6px;
+  white-space: normal;
+  word-wrap: break-word;
 }

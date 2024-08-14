@@ -16,12 +16,6 @@ export default function Content() {
     setValue('')
   }
 
-
-
-
-
-
-
   return (
     <main className="main-container">
       <Dialogue chat={chat} />
