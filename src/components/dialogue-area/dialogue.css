@@ -1,0 +1,32 @@
+.dialogue-section{
+  display: flex;
+  flex-direction: column-reverse;
+  position: relative;
+  height: 90vh;
+}
+
+.message-div{
+  text-wrap: wrap;
+
+}
+
+.label-message{
+  position: relative;
+  left: 0;
+  margin: 10px 0;
+  max-width: 20rem;
+  padding: 4px;
+  background-color: gray;
+  text-wrap: wrap;
+  overflow: hidden;
+  
+}
+
+.label-icon{
+  position: absolute;
+  top: 0;
+  z-index: var(--layer-1);
+  display: block;
+  width: 8px;
+  height: 13px;
+}

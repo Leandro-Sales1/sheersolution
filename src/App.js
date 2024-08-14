@@ -4,9 +4,9 @@ import './app.css'
 
 function App() {
   return (
-    <section class="main-section">
+    <section className="main-section">
       <LeftSideBar />
-      <Content />
+      <Content/>
     </section>
   );
 }

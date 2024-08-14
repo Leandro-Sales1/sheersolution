@@ -5,19 +5,19 @@ export default function LeftSideBar() {
 
   return (
     <>
-      <section class="sidebar">
-        <div class="logo-container">
-          <img alt="logo" class="logo" src="/assets/logo.svg" />
-          <h2 class="company-name">Sheer Solutions</h2>
+      <section className="sidebar">
+        <div className="logo-container">
+          <img alt="logo" className="logo" src="/assets/logo.svg" />
+          <h2 className="company-name">Sheer Solutions</h2>
         </div>
-        <p class="solutions-text">FAQs:</p>
-        <div class="faq-div">
-          {faqs.map((faq) => {
+        <p className="solutions-text">FAQ:</p>
+        <div className="faq-div">
+          {faqs.map((faq, index) => {
             return (
-              <ul className='faq-question'>
+              <ul key={index} className='faq-question'>
                 {faq.question}
-                <li className='faq-answer'>{faq.answer1}</li>
-                <li className='faq-answer'>{faq.answer2}</li>
+                <li key={faq.answer1} className='faq-answer'>{faq.answer1}</li>
+                <li key={faq.answer2} className='faq-answer'>{faq.answer2}</li>
               </ul>
             )
           })}
