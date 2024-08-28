@@ -16,6 +16,13 @@ export default function Content() {
     }
   }
 
+  function handleKeyDown(e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleForm(e);
+    }
+  }
+
   return (
     <main className="main-container">
       <Dialogue questions={questions} />
@@ -28,6 +35,7 @@ export default function Content() {
             cols={50}
             wrap="soft"
             onChange={(e) => setValue(e.target.value)}
+            onKeyDown={handleKeyDown}
             className="input-field"
           ></textarea>
           <button type="submit" className="submit-button">
