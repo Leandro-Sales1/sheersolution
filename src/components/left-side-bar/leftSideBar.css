@@ -94,3 +94,15 @@
 .collaborator-title{
   margin-top: 0.5rem;
 }
+
+@media (min-width: 1024px) and (max-width: 1600px) {
+  .collaborator-div{
+    margin-top: 1rem;
+  }
+  .faq-div{    
+    gap: 1.250rem;
+  }
+  .faq-closed{
+    margin-top: 32rem;
+  }
+}

@@ -1,34 +1,40 @@
-import { useState } from "react"
+import { useState } from "react";
 import { LuSend } from "react-icons/lu";
-import './content.css'
+import './content.css';
 import Dialogue from "../dialogue-area/Dialogue";
-
-
+import { questions as initialQuestions } from "../../constants/questions";
 
 export default function Content() {
-  const [value, setValue] = useState('')
-  const [chat, setChat] = useState([])
-
+  const [value, setValue] = useState('');
+  const [questions, setQuestions] = useState([...initialQuestions]);
 
   function handleForm(e) {
-    e.preventDefault()
-    setChat([...chat, value])
-    setValue('')
+    e.preventDefault();
+    if (value.trim()) {
+      setQuestions(prevQuestions => [...prevQuestions, { message: value, type: 'question' }]);
+      setValue('');
+    }
   }
 
   return (
     <main className="main-container">
-      <Dialogue chat={chat} />
+      <Dialogue questions={questions} />
       <div className="form-wrapper">
-        <form className="form-container">
-          <textarea placeholder="Digite sua pergunta..." value={value}
-            rows={10} cols={50} wrap="soft"
+        <form className="form-container" onSubmit={handleForm}>
+          <textarea
+            placeholder="Digite sua pergunta..."
+            value={value}
+            rows={10}
+            cols={50}
+            wrap="soft"
             onChange={(e) => setValue(e.target.value)}
-            className="input-field"></textarea>
-          <button onClick={(e) => handleForm(e)} type="submit"
-            className="submit-button"><LuSend className="icon" /></button>
+            className="input-field"
+          ></textarea>
+          <button type="submit" className="submit-button">
+            <LuSend className="icon" />
+          </button>
         </form>
       </div>
     </main>
-  )
+  );
 }

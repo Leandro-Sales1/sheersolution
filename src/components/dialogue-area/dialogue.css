@@ -4,6 +4,7 @@
   flex-direction: column;
   position: relative;
   height: 90vh;
+  
 }
 .response-div{
   text-wrap: wrap;
