@@ -2,30 +2,81 @@ import { useState } from "react";
 import { LuSend } from "react-icons/lu";
 import './content.css';
 import Dialogue from "../dialogue-area/Dialogue";
-import { questions as initialQuestions } from "../../constants/questions";
+import api from "../../api/api";
+import { useRecoilState } from "recoil";
+import { chatState } from "../../states/chatState";
+import { IMessage } from "../../interfaces/chat";
+import { v4 as uuid } from 'uuid';
+
 
 export default function Content() {
   const [value, setValue] = useState('');
-  const [questions, setQuestions] = useState([...initialQuestions]);
+  const [chat, setChat] = useRecoilState(chatState);
 
-  function handleForm(e) {
+
+
+  function handleForm(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (value.trim()) {
-      setQuestions(prevQuestions => [...prevQuestions, { message: value, type: 'question' }]);
-      setValue('');
+    postQuestion();
+  }
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      postQuestion();
     }
   }
 
-  function handleKeyDown(e) {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleForm(e);
+  function updateMessages(newMessage: IMessage) {
+    setChat((prevChat) => ({
+      ...prevChat,
+      messages: [...prevChat.messages, newMessage],
+    }));
+  }
+
+  async function postQuestion() {
+    try {
+      //storing the question in messages 
+      const question = await api.post('messages', {
+        chatId: chat.id,
+        senderType: "USER",
+        content: value,
+      });
+
+      //update the state with the user massage
+      updateMessages(question.data)
+
+      //getting the answer by task
+      const answer = await api.get(`tasks/search?searchTerm=${value}`)
+      updateMessages({
+        content: 'Segundo o banco de dados da sua empresa, essas são as possíveis respostas para sua dúvida:'
+          + answer.data,
+        id: uuid(),
+        senderType: "ASSISTANT",
+        timestamp: new Date().toISOString()
+      })
+
+      //getting the answer by Gemini
+      const geminiAnswer = await api.post('gemini-api/submit', {
+        message: value
+      })
+      updateMessages({
+        content: 'Segundo o nosso assistente, essas são as possíveis respostas para sua dúvida:'
+          + geminiAnswer.data,
+        id: uuid(),
+        senderType: "ASSISTANT",
+        timestamp: new Date().toISOString()
+      })
+
+    } catch (error) {
+      console.error("Erro ao buscar os dados da API:", error);
     }
+    setValue('');
   }
 
   return (
     <main className="main-container">
-      <Dialogue questions={questions} />
+      <Dialogue />
       <div className="form-wrapper">
         <form className="form-container" onSubmit={handleForm}>
           <textarea

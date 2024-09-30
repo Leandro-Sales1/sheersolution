@@ -43,7 +43,8 @@
   position: relative;
   left: 3rem;
   margin: .5rem 0;
-  width: 15rem;
+  width: 20rem;
+  line-height: 1.3rem;
   height: auto;
   max-height: fit-content;
   max-width: 40rem;

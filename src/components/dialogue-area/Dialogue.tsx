@@ -1,48 +1,39 @@
 import './dialogue.css';
-import { response } from '../../constants/response';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import api from '../../api/api';
+import { useRecoilState } from 'recoil';
+import { chatState } from '../../states/chatState';
 
-export default function Dialogue({ questions }) {
-  const [chat, setChat] = useState([]);
-
-
-  useEffect(() => {
-    if (questions.length > 0) {
-      const lastQuestion = questions[questions.length - 1];
-      setChat(prevChat => [...prevChat, lastQuestion]);
-    }
-  }, [questions]);
+export default function Dialogue() {
+  const [chat, setChat] = useRecoilState(chatState);
 
   useEffect(() => {
-    const chatLastMessage = chat[chat.length - 1];
-    if (chatLastMessage?.type === 'question') {
-
-      const firstTimer = setTimeout(() => {
-        setChat(prevChat => [...prevChat, response[0]]);
-      }, 500);
-
-      return () => clearTimeout(firstTimer);
-    }
-  }, [chat]);
-
-  useEffect(() => {
-    const chatLastMessage = chat[chat.length - 1];
-    if (chatLastMessage?.type === 'response_1') {
-
-      const secondTimer = setTimeout(() => {
-        setChat(prevChat => [...prevChat, response[1]]);
-      }, 2500);
-
-      return () => clearTimeout(secondTimer);
-    }
-  }, [chat]);
+    const fetchData = async () => {
+      try {
+        const createChat = await api.post('chat/createChat', {
+          employeeId: "123e4567-e89b-12d3-a456-426614174000",
+          startTimestamp: "2024-08-17T12:00:00",
+          status: "ACTIVE"
+        });
+        setChat(createChat.data);
+      } catch (error) {
+        console.error("Erro ao buscar os dados da API:", error);
+      }
+    };
+    fetchData();
+  }, [setChat]);
 
   return (
     <section className="dialogue-section">
-      {chat.map((message, index) => (
-        <div key={index} className={message.type === 'question' ? 'message-div' : 'response-div'}>
-          <p className={message.type === 'question' ? 'label-message' : 'label-response'}>
-            {message.message}
+      {chat.messages.map((message, index) => (
+        <div key={index} className={message.senderType === 'USER' ? 'message-div' : 'response-div'}>
+          <p className={message.senderType === 'USER' ? 'label-message' : 'label-response'}>
+            {message.content.split(/(:|\.)/g).map((part, index) => (
+              <span key={index}>
+                {part}
+                {(part === ':' || part === '.') && <br />}
+              </span>
+            ))}
           </p>
         </div>
       ))}
