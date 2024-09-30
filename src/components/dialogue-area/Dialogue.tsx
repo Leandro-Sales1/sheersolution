@@ -1,11 +1,11 @@
 import './dialogue.css';
 import { response } from '../../constants/response';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Dialogue({ questions }) {
   const [chat, setChat] = useState([]);
 
-  
+
   useEffect(() => {
     if (questions.length > 0) {
       const lastQuestion = questions[questions.length - 1];
@@ -16,7 +16,7 @@ export default function Dialogue({ questions }) {
   useEffect(() => {
     const chatLastMessage = chat[chat.length - 1];
     if (chatLastMessage?.type === 'question') {
-      
+
       const firstTimer = setTimeout(() => {
         setChat(prevChat => [...prevChat, response[0]]);
       }, 500);
@@ -28,7 +28,7 @@ export default function Dialogue({ questions }) {
   useEffect(() => {
     const chatLastMessage = chat[chat.length - 1];
     if (chatLastMessage?.type === 'response_1') {
-      
+
       const secondTimer = setTimeout(() => {
         setChat(prevChat => [...prevChat, response[1]]);
       }, 2500);
