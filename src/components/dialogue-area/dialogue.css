@@ -4,7 +4,8 @@
   flex-direction: column;
   position: relative;
   height: 90vh;
-  
+  flex: 1; 
+  overflow-y: auto;
 }
 .response-div{
   text-wrap: wrap;
