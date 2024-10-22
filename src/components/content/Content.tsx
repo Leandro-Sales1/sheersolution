@@ -58,8 +58,8 @@ export default function Content() {
       })
 
       //getting the answer by Gemini
-      const geminiAnswer = await geminiApi.post(
-        value
+      const geminiAnswer = await geminiApi.post("submit",
+        { message: value }
       )
       updateMessages({
         content: 'Segundo o nosso assistente, essas são as possíveis respostas para sua dúvida:'
