@@ -7,6 +7,7 @@ import { useRecoilState } from "recoil";
 import { chatState } from "../../states/chatState";
 import { IMessage } from "../../interfaces/chat";
 import { v4 as uuid } from 'uuid';
+import geminiApi from "../../api/geminiApi";
 
 
 export default function Content() {
@@ -57,9 +58,9 @@ export default function Content() {
       })
 
       //getting the answer by Gemini
-      const geminiAnswer = await api.post('gemini-api/submit', {
-        message: value
-      })
+      const geminiAnswer = await geminiApi.post(
+        value
+      )
       updateMessages({
         content: 'Segundo o nosso assistente, essas são as possíveis respostas para sua dúvida:'
           + geminiAnswer.data,
