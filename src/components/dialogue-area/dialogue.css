@@ -1,27 +1,22 @@
-.dialogue-section{
+.dialogue-section {
+  height: 100%;
+}
+
+.response-div,
+.message-div {
   display: flex;
-  justify-content: end;
-  flex-direction: column;
-  position: relative;
-  height: 90vh;
-  flex: 1; 
-  overflow-y: auto;
+  width: 100%;
 }
-.response-div{
-  text-wrap: wrap;
-  display: inline-flex;
+
+.response-div {
   justify-content: flex-start;
-  width: 100%;
 }
 
-.message-div{
-  text-wrap: wrap;
-  display: inline-flex;
+.message-div {
   justify-content: flex-end;
-  width: 100%;
 }
 
-.label-message{
+.label-message {
   position: relative;
   right: 3rem;
   margin: .5rem 0;
@@ -34,13 +29,12 @@
   text-align: left;
   text-overflow: clip;
   text-wrap: wrap;
-  overflow: hidden;
   border-radius: 6px;
   white-space: normal;
   word-wrap: break-word;
 }
 
-.label-response{
+.label-response {
   position: relative;
   left: 3rem;
   margin: .5rem 0;
@@ -54,7 +48,6 @@
   text-align: left;
   text-overflow: clip;
   text-wrap: wrap;
-  overflow: hidden;
   border-radius: 6px;
   white-space: normal;
   word-wrap: break-word;

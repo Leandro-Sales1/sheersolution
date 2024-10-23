@@ -77,7 +77,9 @@ export default function Content() {
 
   return (
     <main className="main-container">
-      <Dialogue />
+      <section className="dialogue-wrapper">
+        <Dialogue />
+      </section>
       <div className="form-wrapper">
         <form className="form-container" onSubmit={handleForm}>
           <textarea
